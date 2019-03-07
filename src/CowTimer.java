@@ -15,9 +15,12 @@ public class CowTimer {
 
 	public static void main(String[] args) throws InterruptedException {
 		/* 1. Make a CowTimer, set the time and start it. */
-
+		CowTimer bobby= new CowTimer();
+		bobby.setTime(7373);
+		bobby.start();
+	
 	}
-
+	int because;
 	private int minutes;
 
 	public void setTime(int minutes) {
@@ -30,9 +33,58 @@ public class CowTimer {
 		 * 2. Count down the minutes, print the current minute then sleep for 60 seconds
 		 * using Thread.sleep(int milliseconds).
 		 */
+		for (int i = 0; i < minutes; i++) {
+			int time= minutes-i;
+			System.out.println(time+"Thats not a mole");
+			Thread.sleep(1);
+		}
+	   
+	    playSound("moo.wav");
+Thread.sleep(999);
+playSound("moo.wav");
+Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");Thread.sleep(999);
+playSound("moo.wav");
 
 		/*
-		 * 3. When the timer is finished, use the playSound method to play a moo sound.
+		 * im3. When the timer is finished, use the playSound method to play a moo sound.
 		 * You can use the .wav file in the default package, or you can download one
 		 * from freesound.org, then drag it intothe default package.
 		 */
