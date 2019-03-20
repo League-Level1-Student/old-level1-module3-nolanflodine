@@ -54,7 +54,13 @@ public class SimonSays extends KeyAdapter {
 		
 			// 18. Use the speak method to tell the user they were correct
 		speak("You are a correct mole");
-		}else {
+		}
+		if (e.getKeyCode()!=imageIndex && g==1) {
+			pointz++;
+			speak("YAAA Boo Gaaa da ba booooooooooo");
+		}
+		if (e.getKeyCode()!=imageIndex && g==0) {
+
 		pointz--;
 		speak("Bring digga ding digga digga da-ding\n" + 
 				"digga ding digga ding digga digga da-ding!\n" + 
@@ -64,6 +70,14 @@ public class SimonSays extends KeyAdapter {
 				"Oh ho!");
 		tries++;
 		}
+		if (e.getKeyCode()==imageIndex && g==1) {
+pointz--;
+speak("Bring digga ding digga digga da-ding\n" + 
+		"digga ding digga ding digga digga da-ding!\n" + 
+		"Vamos! Unh! Unh! Unh!\n" + 
+		"Bring digga ding digga digga da-ding\n" + 
+		"digga ding digga ding digga digga da-ding!\n" + 
+		"Oh ho!");
 		if (tries>=2) {
 		JOptionPane.showMessageDialog(null, "Your score is "+pointz);	
 		System.exit(0);
@@ -110,7 +124,7 @@ public class SimonSays extends KeyAdapter {
         Random randy= new Random();
 		// 13. Use the Random and the speak method to either say 
 		// "Simon says press this key" or "Press this key"
-        int g= randy.nextInt(1);
+         g= randy.nextInt(2);
         if (g==0) {
         	speak("Simon said press this key");
         }
