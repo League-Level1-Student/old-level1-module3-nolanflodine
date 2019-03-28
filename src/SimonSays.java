@@ -26,7 +26,7 @@ public class SimonSays extends KeyAdapter {
 	HashMap<Integer, String> images = new HashMap<Integer, String>();
 	private int imageIndex;
 	private int tries = 0;
-	int g;
+	int g=0;
 	private boolean simonSays = false;
 	Date timeAtStart;
 
@@ -48,52 +48,43 @@ public class SimonSays extends KeyAdapter {
 		// 15. Make a points variable to track the score.
         int pointz=0;
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-		if (e.getKeyCode()==imageIndex && g==0) {
+		if (e.getKeyCode()==imageIndex && simonSays==true) {
 			// 17. Increase the value of score
 		pointz++;
 		
 			// 18. Use the speak method to tell the user they were correct
 		speak("You are a correct mole");
 		}
-		if (e.getKeyCode()!=imageIndex && g==1) {
-			pointz++;
-			speak("YAAA Boo Gaaa da ba booooooooooo");
-		}
-		if (e.getKeyCode()!=imageIndex && g==0) {
-
-		pointz--;
-		speak("Bring digga ding digga digga da-ding\n" + 
-				"digga ding digga ding digga digga da-ding!\n" + 
-				"Vamos! Unh! Unh! Unh!\n" + 
-				"Bring digga ding digga digga da-ding\n" + 
-				"digga ding digga ding digga digga da-ding!\n" + 
-				"Oh ho!");
-		tries++;
-		}
-		if (e.getKeyCode()==imageIndex && g==1) {
-pointz--;
-speak("Bring digga ding digga digga da-ding\n" + 
-		"digga ding digga ding digga digga da-ding!\n" + 
-		"Vamos! Unh! Unh! Unh!\n" + 
-		"Bring digga ding digga digga da-ding\n" + 
-		"digga ding digga ding digga digga da-ding!\n" + 
-		"Oh ho!");
-		if (tries>=2) {
-		JOptionPane.showMessageDialog(null, "Your score is "+pointz);	
-		System.exit(0);
-		}
-		frame.dispose();		
-		showImage();
-
+		
+	
+		
+		
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't say..."
+		else if (e.getKeyCode()!=imageIndex && simonSays==false) {
+			pointz++;
+			speak("Correct");
 		
+		}	
+		
+		else {
+			tries++;
+			speak("incorrect");
+
+		}
+					
 			// 20.  Increase the value of score
-		
 			// 21. Use the speak method to tell the user they were correct
 		
 		// 22. Increment tries by 1
 		
 		// 25. If tries is greater than 9 (or however many you want)...
+		if (tries>=5) {
+			JOptionPane.showMessageDialog(null, "Your score is "+pointz);	
+			System.exit(0);
+		}
+		
+			frame.dispose();	
+			showImage();
 		
 			// 26. Tell the user their score
 		
@@ -127,9 +118,11 @@ speak("Bring digga ding digga digga da-ding\n" +
          g= randy.nextInt(2);
         if (g==0) {
         	speak("Simon said press this key");
+        	simonSays=true;
         }
-        if (g==1) {
+        else if (g==1) {
         	speak("Press this key");
+        	simonSays=false;
         }
 		// 14. Above, set the value of simonSays to true/false appropriately
         
