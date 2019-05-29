@@ -26,12 +26,13 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
 	private int buttonCount = 0;
 	private AudioClip sound;
+	String A1="";
 
 	public static void main(String[] args) {
 		new Jeopardy().start();
@@ -41,47 +42,52 @@ public class Jeopardy implements ActionListener {
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 quizPanel=new JPanel();
+		 
 		f.setLayout(new BorderLayout());
 
+		
 		// 1. Make the frame show up
 f.setVisible(true);
 		// 2. Give your frame a title
 f.setTitle("Brotato Chip");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
+JPanel panel= createHeader("dog");
 quizPanel=createHeader("Topic 1");
 f.add(quizPanel);
 
 		// 4. Add the header component to the quizPanel
-
+quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
-
+f.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-
+firstButton=createButton("$200");
 		// 7. Add the firstButton to the quizPanel
-
+quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-
+secondButton=createButton("$400");
 		// 10. Add the secondButton to the quizPanel
-
+quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
-
+firstButton.addActionListener(this);
+secondButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
-
+thirdButton=createButton("$600");
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
-		
+fourthButton=createButton("$800");
+fifthButton=createButton("$1000");
 		 /*
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
 		 */		
 		
-		frame.pack();
+		f.pack();
 		quizPanel.setLayout(new GridLayout(buttonCount + 1, 3));
-		frame.add(makeScorePanel(), BorderLayout.NORTH);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
+		f.add(makeScorePanel(), BorderLayout.NORTH);
+		f.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
 				Toolkit.getDefaultToolkit().getScreenSize().width);
 	}
 
@@ -89,14 +95,14 @@ f.add(quizPanel);
 	private JButton createButton(String dollarAmount) {
 		
 		// Create a new JButton
-
+JButton button = new JButton();
 		// Set the text of the button to the dollarAmount
-
+button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
-
+buttonCount++;
 		// Return your new button instead of the temporary button
 
-		return new JButton("temporary button");
+		return new JButton("new button");
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -106,7 +112,9 @@ f.add(quizPanel);
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-
+if (buttonPressed==firstButton) {
+	askQuestion();
+}
 			// Call the askQuestion() method
  
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
@@ -122,12 +130,21 @@ f.add(quizPanel);
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		
+		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
+		A1=JOptionPane.showInputDialog(null, "Is this the Krusty Crab?");
 		
 		// Stop the theme music when they have entered their response. Hint: use the sound variable 
-		
+if (A1.equals("no this is patrick")) {
+	score=score+prizeMoney;
+	JOptionPane.showMessageDialog(null, "Correct");
+}
+else {
+	score=score-prizeMoney;
+	JOptionPane.showMessageDialog(null, "Incorrect, you shouldv'e said \"no this is patrick\"");
+	
+	
+}
 		// If the answer is correct
 
 			// Increase the score by the prizeMoney
