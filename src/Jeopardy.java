@@ -33,6 +33,10 @@ public class Jeopardy implements ActionListener {
 	private int buttonCount = 0;
 	private AudioClip sound;
 	String A1="";
+	String A2="";
+	String A3="";
+	String A4="";
+	String A5="";
 
 	public static void main(String[] args) {
 		new Jeopardy().start();
@@ -51,9 +55,8 @@ f.setVisible(true);
 		// 2. Give your frame a title
 f.setTitle("Brotato Chip");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
-JPanel panel= createHeader("dog");
-quizPanel=createHeader("Topic 1");
-f.add(quizPanel);
+JPanel panel= createHeader("Header");
+
 
 		// 4. Add the header component to the quizPanel
 quizPanel.add(panel);
@@ -79,6 +82,10 @@ thirdButton=createButton("$600");
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 fourthButton=createButton("$800");
 fifthButton=createButton("$1000");
+quizPanel.add(thirdButton);
+quizPanel.add(fourthButton);
+quizPanel.add(fifthButton);
+
 		 /*
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
@@ -101,19 +108,31 @@ button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
 buttonCount++;
 		// Return your new button instead of the temporary button
-
-		return new JButton("new button");
+//hold on
+		return button;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
+		//JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 if (buttonPressed==firstButton) {
-	askQuestion();
+	askQuestion(200);
+}
+if (buttonPressed==secondButton) {
+	askQuestion(400);
+}
+if (buttonPressed==thirdButton) {
+	askQuestion(600);
+}
+if (buttonPressed==fourthButton) {
+	askQuestion(800);
+}
+if (buttonPressed==fifthButton) {
+	askQuestion(1000);
 }
 			// Call the askQuestion() method
  
@@ -127,15 +146,18 @@ if (buttonPressed==firstButton) {
 
 	}
 
-	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
+	private void askQuestion(int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
 		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
 		A1=JOptionPane.showInputDialog(null, "Is this the Krusty Crab?");
-		
+		A2=JOptionPane.showInputDialog("This is a trick question");
+		A3=JOptionPane.showInputDialog("2+2 is");
+		A4=JOptionPane.showInputDialog("I got the");
+		A5=JOptionPane.showInputDialog("Its an avacodo!");
 		// Stop the theme music when they have entered their response. Hint: use the sound variable 
-if (A1.equals("no this is patrick")) {
+if (A1.equals("No this is patrick")) {
 	score=score+prizeMoney;
 	JOptionPane.showMessageDialog(null, "Correct");
 }
@@ -145,6 +167,53 @@ else {
 	
 	
 }
+updateScore();
+if (A2.equals("I know you are but what am I")) {
+	score=score+prizeMoney;
+	JOptionPane.showMessageDialog(null, "Correct");
+}
+else {
+	score=score-prizeMoney;
+	JOptionPane.showMessageDialog(null, "Incorrect, you shouldv'e said \"I know you are but what am I\"");
+	
+	
+}
+updateScore();
+
+if (A3.equals("4-1 that's 3")) {
+	score=score+prizeMoney;
+	JOptionPane.showMessageDialog(null, "Correct");
+}
+else {
+	score=score-prizeMoney;
+	JOptionPane.showMessageDialog(null, "Incorrect, you shouldv'e said \"4-1 that's 3\"");
+	
+	
+}
+updateScore();
+if (A4.equals("Horses in the back")) {
+	score=score+prizeMoney;
+	JOptionPane.showMessageDialog(null, "Correct");
+}
+else {
+	score=score-prizeMoney;
+	JOptionPane.showMessageDialog(null, "Incorrect, you shouldv'e said \"Horses in the back\"");
+	
+	
+}
+updateScore();
+if (A5.equals("Thaannkkss")) {
+	score=score+prizeMoney;
+	JOptionPane.showMessageDialog(null, "Correct");
+}
+else {
+	score=score-prizeMoney;
+	JOptionPane.showMessageDialog(null, "Incorrect, you shouldv'e said \"Thaannkkss\"");
+	
+	
+}
+updateScore();
+
 		// If the answer is correct
 
 			// Increase the score by the prizeMoney
